@@ -1,0 +1,33 @@
+hydra:
+  job:
+    chdir: true
+
+seed: 0  # Set to null for a time-dependent random seed
+live_plotting: true
+
+# Theory
+lattice_size: 6
+m2: -4
+lam: 6.975
+
+# Training
+batch_size: 256
+max_time: 10  # in minutes
+save_time: null  # save every x minutes; if null only save at the end
+epoch_size: 5  # update live plot every epoch
+
+optimizer:
+  _target_: optax.adam
+  learning_rate:
+    _target_: optax.exponential_decay
+    init_value: 5e-3
+    transition_steps: 8000
+    decay_rate: 1e-1
+  b1: 0.8
+  b2: 0.9
+
+# Model
+model_def:
+  _target_: jaxlft.cnf.Phi4CNF
+  use_conv: true
+  int_steps: 50
