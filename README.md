@@ -18,9 +18,16 @@ the additional packages [hydra](https://hydra.cc/) and [matplotlib](https://matp
 
 ## Examples
 
-### Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mathisgerdes/continuous-flow-lft/blob/master/notebooks/train-and-mcmc.ipynb)
+### Introduction 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mathisgerdes/continuous-flow-lft/blob/master/notebooks/train-and-mcmc.ipynb)
+
 A step-by-step jupyter notebook with further explanations can be found in `notebooks/train-and-mcmc.ipynb`.
 It contains an example of training the normalizing flow and using it to generate samples with a Metropolis-Hastings MCMC step.
+
+### Loading network parameters
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7547918.svg)](https://doi.org/10.5281/zenodo.7547918)
+
+The `notebooks/load-parameters.ipynb` notebook demonstrates how to load previously trained parameters for the examples discussed in the paper.
 
 ### Scripts
 Two scripts for training networks as used in the paper are provided: `example_single` and `example_conditional`.
@@ -28,7 +35,7 @@ These can be configured by modifying or adding to the configuration files in the
 
 Note that training can be slow when running on the CPU.
 Especially for a smaller lattice the batch size can be reduced while still yielding good results:
-`python example_single.py ++live_plotting=true ++batch_size=64`
+`python example_single.py ++live_plotting=true ++batch_size=64`.
 
 ## Reference
 If you find our work useful, please cite
