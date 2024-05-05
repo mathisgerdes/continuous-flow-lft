@@ -3,14 +3,14 @@
 
 from __future__ import annotations
 
-import jax
-import jax.numpy as jnp
-import chex
-import numpy as np
-import haiku as hk
-
 from functools import partial
 from typing import Callable, Optional
+
+import chex
+import haiku as hk
+import jax
+import jax.numpy as jnp
+import numpy as np
 
 
 @jax.jit
@@ -150,13 +150,12 @@ def cyclic_corr_mat(arr: jnp.ndarray) -> jnp.ndarray:
 def reverse_dkl(logp: jnp.ndarray, logq: jnp.ndarray) -> jnp.ndarray:
     """Reverse KL divergence.
 
-    The two likelihood arrays must be evaluated for the same set of samples.
-    This function then approximates ``int_x q(x) log(q(x)/p(x)) dx``.
+    Assuming likelihood arrays are evaluated for the same set of samples drawn
+    from ``q``, this function then approximates the reverse KL divergence
+    ``int_x q(x) log(q(x)/p(x)) dx``.
 
-    If the samples ``x`` are distributed according to ``p(x)``, this
-    is the reverse KL divergence.
     If the samples were taken from p(x), the returned value is the negative
-    forward KL divergence.
+    forward KL divergence: ``int_x p(x) log(q(x)/p(x)) dx``.
 
     Args:
         logp: The log likelihood of p (up to a constant shift).
@@ -173,8 +172,8 @@ def effective_sample_size(logp: jnp.ndarray, logq: jnp.ndarray) -> jnp.ndarray:
     """Compute the ESS given log likelihoods.
 
     The two likelihood arrays must be evaluated for the same set of samples.
-    The samples are assumed to be sampled from ``p``, such that ``logp``
-    is are the corresponding log-likelihoods.
+    The samples are assumed to be drawn from ``q``, such that ``logq``
+    are the corresponding log-likelihoods, and ``p`` is the target.
 
     Args:
         logp: The log likelihood of p (up to a constant shift).
