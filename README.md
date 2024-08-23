@@ -40,13 +40,15 @@ Especially for a smaller lattice the batch size can be reduced while still yield
 ## Reference
 If you find our work useful, please cite
 ```
-@article{gerdes2022,
-    author = "Gerdes, Mathis and de Haan, Pim and Rainone, Corrado and Bondesan, Roberto and Cheng, Miranda C. N.",
-    title = "{Learning Lattice Quantum Field Theories with Equivariant Continuous Flows}",
-    eprint = "2207.00283",
-    archivePrefix = "arXiv",
-    primaryClass = "hep-lat",
-    month = "7",
-    year = "2022"
+@Article{gerdes2023,
+	title={{Learning lattice quantum field theories with equivariant continuous flows}},
+	author={Mathis Gerdes and Pim de Haan and Corrado Rainone and Roberto Bondesan and Miranda C. N. Cheng},
+	journal={SciPost Phys.},
+	volume={15},
+	pages={238},
+	year={2023},
+	publisher={SciPost},
+	doi={10.21468/SciPostPhys.15.6.238},
+	url={https://scipost.org/10.21468/SciPostPhys.15.6.238},
 }
 ```
